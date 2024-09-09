@@ -1,0 +1,43 @@
+.dashboard-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espacement entre les cartes */
+    justify-content: space-around; /* Répartir les cartes de manière uniforme */
+}
+
+.block-card-dashboard {
+    width: 200px; /* Taille fixe pour les cartes */
+    text-align: center; /* Centrer le contenu à l'intérieur des cartes */
+}
+
+.block-card-dashboard-total {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.block-card-dashboard-total img {
+    width: 100px; /* Taille uniforme pour les images */
+    height: auto; /* Préserver le ratio d'aspect */
+    margin-bottom: 10px;
+}
+
+.block-card-dashboard-total-text .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.block-card-dashboard-total-text .number {
+    font-size: 24px;
+    color: #333;
+    margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+    .dashboard-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+}

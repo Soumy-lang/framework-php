@@ -1,0 +1,64 @@
+#header.back-office-header {
+    background-color: #132c19; 
+    padding: 10px 0;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.disconnect-button{
+    align-self: flex-end;
+    padding: 20px;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.navbar ul li {
+    margin: 0 15px; 
+}
+
+.navbar ul li a {
+    color: white; 
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+.navbar ul li a:hover {
+    color: black;
+}
+
+.navbar ul li:first-child a {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 12px 25px; 
+    border-radius: 5px;
+}
+
+.back-office-content {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.btn-logout {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.btn-logout img {
+    width: 24px;
+    height: 24px;
+}
+

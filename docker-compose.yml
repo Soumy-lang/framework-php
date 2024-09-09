@@ -1,11 +1,10 @@
-version: '3'
 services:
   web:
     build: .
     ports:
       - "80:80"
     volumes:
-      - ./www:/var/www/html/
+      - ./www:/var/www/html
       - ./.env:/var/www/html/.env
       - ./server/000-default.conf:/etc/apache2/sites-available/000-default.conf
       - ./server/apache2.conf:/etc/apache2/apache2.conf
@@ -17,10 +16,9 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}                # Crée la base de données à l'initialisation
+      MYSQL_USER: ${DB_USER}                    # Crée un utilisateur non root avec ce nom
+      MYSQL_PASSWORD: ${DB_PASSWORD}            # Mot de passe pour l'utilisateur non root
     volumes:
       - mysql_data:/var/lib/mysql
 

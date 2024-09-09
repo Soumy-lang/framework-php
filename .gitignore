@@ -1,1 +1,3 @@
 .env
+www/config.php
+www/configdb.php
