@@ -16,7 +16,7 @@ class EditUser
             "config"=> [
                 "method"=>"POST",
                 "action"=>"edit-user?id=".$this->userData['id'] ?? '',
-                "submit"=>"Sauvegarder les modifications",
+                "submit"=>"Enregistrer",
                 "enctype"=>"multipart/form-data",
                 "class"=>"form"
             ],
@@ -42,14 +42,14 @@ class EditUser
                     "error"=>"Veuillez entrer une adresse email valide",
                     "value" => $this->userData['email'] ?? '',
                 ],
-                "Image de profil"=>[
-                    "type"=>"file",
-                    "name" => "profile_picture",
-                    "class" => "input-form",
-                    "required"=>false, // Dépend de si tu veux forcer l'utilisateur à avoir une image de profil
-                    "accept"=>"image/*", // Accepte uniquement les images
-                    "value" => $this->userData['img_path'] ?? '',
-                ],
+                // "Image de profil"=>[
+                //     "type"=>"file",
+                //     "name" => "profile_picture",
+                //     "class" => "input-form",
+                //     "required"=>false, // Dépend de si tu veux forcer l'utilisateur à avoir une image de profil
+                //     "accept"=>"image/*", // Accepte uniquement les images
+                //     "value" => $this->userData['img_path'] ?? '',
+                // ],
                 "Nom"=>[
                     "type"=>"text",
                     "name" => "nom",
@@ -69,7 +69,7 @@ class EditUser
                 "Role"=>[
                     "type"=>"radio",
                     "name" => "Role",
-                    "class" => "input-form",
+                    "class" => "radio-form",
                     "options"=> [
                         "admin" => "Administrateur",
                         "editor" => "Éditeur",

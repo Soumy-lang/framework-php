@@ -12,29 +12,31 @@
 					<div class="title">Pages</div>
 					<div class="number"><?php echo htmlspecialchars($elementsCount['pages']); ?></div>
 				</div>
-		</div>
-	</a>
-	<a href="/bo/user">
-		<div class="block-card-dashboard-total blue">
-			<img src="/Views/styles/dist/images/profil.png" alt="users-image">
-			<div class="block-card-dashboard-total-text">
-				<div class="title">Utilisateurs</div>
-				<div class="number"><?php echo htmlspecialchars($elementsCount['users']); ?></div>
 			</div>
 		</div>
 	</a>
-	</div>
-
+	<a href="/bo/user">
+		<div class="block-card-dashboard">
+			<div class="block-card-dashboard-total blue">
+				<img src="/Views/styles/dist/images/profil.png" alt="users-image">
+				<div class="block-card-dashboard-total-text">
+					<div class="title">Utilisateurs</div>
+					<div class="number"><?php echo htmlspecialchars($elementsCount['users']); ?></div>
+				</div>
+			</div>
+		</div>
+	</a>
     <a href="/bo/articles">
-        <div class="block-card-dashboard-total green">
-            <img src="/Views/styles/dist/images/article.png" alt="comment-image">
-            <div class="block-card-dashboard-total-text">
-                <div class="title">Articles</div>
-                <div class="number"><?php echo htmlspecialchars($elementsCount['articles']); ?></div>
-            </div>
-        </div>
+		<div class="block-card-dashboard">
+			<div class="block-card-dashboard-total green">
+				<img src="/Views/styles/dist/images/article.png" alt="comment-image">
+				<div class="block-card-dashboard-total-text">
+					<div class="title">Articles</div>
+					<div class="number"><?php echo htmlspecialchars($elementsCount['articles']); ?></div>
+				</div>
+			</div>
+		</div>
     </a>
-	</div>
     
 </section>
 

@@ -1,7 +1,7 @@
 <h2>Mes pages</h2>
 
 <div class="post-page">
-    <section class="section1-status-tab">
+    <!-- <section class="section1-status-tab">
         <table class="status-tab">
             <thead>
                 <tr class="tab">
@@ -11,7 +11,7 @@
                 </tr>
             </thead>
         </table>
-    </section>
+    </section> -->
     <section class="section2-search-bar">
         <div class="block-line-search">
             <label for="input-name"></label>

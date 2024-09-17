@@ -37,15 +37,11 @@ class DB
         return self::$instance;
     }
 
-
-    // Empêcher le clonage de l'instance
     private function __clone() {}
 
-    // Empêcher la désérialisation de l'instance
     public function __wakeup() {}
 
     public function getAllData(string $return = "array") //pour récupérer tous les enregistrements de la bdd
-
     {
         $sql = "SELECT * FROM " . $this->table;
         $queryPrepared = $this->pdo->prepare($sql);
@@ -56,6 +52,24 @@ class DB
             $queryPrepared->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
         } else {
             // pour récupérer un tableau associatif
+            $queryPrepared->setFetchMode(\PDO::FETCH_ASSOC);
+        }
+
+        return $queryPrepared->fetchAll();
+    }
+
+    public function getDraftData(string $return = "array") //pour récupérer tous les enregistrements où published = 0
+    {
+        // Ajouter la condition WHERE pour filtrer par published = 0
+        $sql = "SELECT * FROM " . $this->table . " WHERE published = 0";
+        $queryPrepared = $this->pdo->prepare($sql);
+        $queryPrepared->execute();
+
+        if ($return == "object") {
+            // Les résultats seront sous forme d'objet de la classe appelée
+            $queryPrepared->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
+        } else {
+            // Pour récupérer un tableau associatif
             $queryPrepared->setFetchMode(\PDO::FETCH_ASSOC);
         }
 
@@ -207,6 +221,56 @@ class DB
         $queryPrepared->execute($data);
 
         // Check if the record was successfully deleted
+        return $queryPrepared->rowCount() > 0;
+    }
+
+    public function drafts(array $data)
+    {
+        // Utilisez la méthode getOneBy pour trouver l'enregistrement à mettre à jour
+        $recordToUpdate = $this->getOneBy($data);
+
+        if (!$recordToUpdate) {
+            // L'enregistrement n'existe pas
+            return false;
+        }
+
+        // Construire l'instruction SQL UPDATE pour mettre published à 0
+        $sql = "UPDATE " . $this->table . " SET published = 0 WHERE ";
+        foreach ($data as $column => $value) {
+            $sql .= $column . "=:" . $column . " AND ";
+        }
+        $sql = substr($sql, 0, -4); // Supprimer le dernier AND
+
+        // Préparer et exécuter la requête UPDATE
+        $queryPrepared = $this->pdo->prepare($sql);
+        $queryPrepared->execute($data);
+
+        // Vérifier si l'enregistrement a bien été mis à jour
+        return $queryPrepared->rowCount() > 0;
+    }
+
+    public function publish(array $data)
+    {
+        // Utilisez la méthode getOneBy pour trouver l'enregistrement à mettre à jour
+        $recordToUpdate = $this->getOneBy($data);
+
+        if (!$recordToUpdate) {
+            // L'enregistrement n'existe pas
+            return false;
+        }
+
+        // Construire l'instruction SQL UPDATE pour mettre published à 0
+        $sql = "UPDATE " . $this->table . " SET published = 1 WHERE ";
+        foreach ($data as $column => $value) {
+            $sql .= $column . "=:" . $column . " AND ";
+        }
+        $sql = substr($sql, 0, -4); // Supprimer le dernier AND
+
+        // Préparer et exécuter la requête UPDATE
+        $queryPrepared = $this->pdo->prepare($sql);
+        $queryPrepared->execute($data);
+
+        // Vérifier si l'enregistrement a bien été mis à jour
         return $queryPrepared->rowCount() > 0;
     }
 

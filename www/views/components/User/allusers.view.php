@@ -1,5 +1,4 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<h3>Tous les utilisateurs</h3>
+<h3 class="box-title">Tous les utilisateurs</h3>
     <?php if (!empty($errors)): ?>
         <div class="error">
             <?php foreach ($errors as $error): ?>
@@ -18,7 +17,7 @@
 
 <section class="section1-user-table">
 <div class="user-table">
-    <table class="responsive-table" id="myTable">
+    <table>
         <thead class="responsive-th">
             <tr>
                 <th>Pseudo</th>
@@ -51,28 +50,3 @@
     </table>
 </div>
 </section>
-
-<script>
-    $(document).ready(function() {
-        var table = $('#myTable').DataTable({
-            "rowCallback": function(row, data, index) {
-                if (index % 2 === 0) {
-                    $(row).css("background-color", "white");
-                } else {
-                    $(row).css("background-color", "");
-                }
-            },
-            "drawCallback": function(settings) {
-                var rows = table.rows({ page: 'current' }).nodes();
-                $(rows).each(function(index) {
-                    if (index % 2 === 0) {
-                        $(this).css("background-color", "white");
-                    } else {
-                        $(this).css("background-color", "");
-                    }
-                });
-            }
-        });
-    });
-
-</script>

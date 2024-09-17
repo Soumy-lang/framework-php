@@ -1,0 +1,60 @@
+
+.section1-status-tab {
+    margin-bottom: 20px;
+}
+
+.status-tab {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.status-tab th,
+.status-tab td {
+    padding: 12px 16px;
+    text-align: left;
+}
+
+.status-tab th {
+    background-color: var(--th-background);
+    font-weight: bold;
+}
+
+.status-tab .tab-item {
+    cursor: pointer;
+}
+
+.status-tab .tab-item.active {
+    color: var(--white-color);
+}
+
+.status-tab .tab-item a {
+    display: block;
+    padding: 10px;
+    color: inherit;
+    text-align: center;
+}
+
+.section2-search-bar {
+    margin-bottom: 20px;
+}
+
+.block-line-search {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.search-input {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+}
+
+.tab-page .fa-pencil {
+    font-size: 16px;
+}
+
+.section4-add {
+    text-align: right;
+}
+

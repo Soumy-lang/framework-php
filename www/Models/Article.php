@@ -177,7 +177,7 @@ class Article extends DB
     }
 
     public function getAllArticles() {
-        return $this->getArticlesAndBlogs("article");
+        return $this->getAllData("article");
     }
 
     public function getPublishedArticles() {

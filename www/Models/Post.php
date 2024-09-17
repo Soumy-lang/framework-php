@@ -163,11 +163,42 @@ class Post extends DB
         }
     }
 
+    public function setCreatedAt($date)
+    {
+        $this->createdat = $date; 
+    }
+
     public function getCreatedat()
     {
         if (isset($this->createdat)) {
             return $this->createdat;
         }
+    }
+
+    public function setUpdatedAt($date)
+    {
+        $this->createdat = $date; 
+    }
+
+    public function setUserId($user_username)
+    {
+        $this->user_username = $user_username;
+    }
+
+    public function getAllArticles() {
+        return $this->getAllData("article");
+    }
+
+    // public function getPublishedPost() {
+    //     return $this->getPublishedPost("article");
+    // }
+
+    public function getDeleted() {
+        return $this->getDeletedData("article");
+    }
+
+    public function getDraft() {
+        return $this->getDraftData("article");
     }
 
     public function validate(): array

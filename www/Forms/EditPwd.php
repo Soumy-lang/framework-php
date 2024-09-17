@@ -17,7 +17,7 @@ class EditPwd
                 "method"=>"POST",
                 "action"=>"edit-password?id=".$this->userData['id'] ?? '',
                 "submit"=>"Changer le mot de passe",
-                "class"=>"form"
+                "class"=>"form form-bloc"
             ],
             "inputs"=>[
                 "id"=>[

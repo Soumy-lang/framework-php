@@ -1,21 +1,22 @@
 <?php
-if (empty($this->data['post']->getId())) {
-    echo "<h2>Nouvelle page</h2>";
-} else {
-    echo "<h2>Modification de la page</h2>";
-}
-$info = $this->data['info'];
-$isPublished = $this->data['post']->getPublished();
-$isDeleted = $this->data['post']->getIsDeleted();
+// if (empty($this->data['post']->getId())) {
+//     echo "<h2>Nouvelle page</h2>";
+// } else {
+//     echo "<h2>Modification de la page</h2>";
+// }
+// $info = $this->data['info'];
+// $isPublished = $this->data['post']->getPublished();
+// $isDeleted = $this->data['post']->getIsDeleted();
 
-echo "<h3>$info</h3>";
+// echo "<h3>$info</h3>";
 
-if (!empty($this->data['mandatoryFields'])) {
-    $missingFields = implode("<br>", $this->data['mandatoryFields']);
-    echo "<div style='color: red'>$missingFields</div>";
-}
+// if (!empty($this->data['mandatoryFields'])) {
+//     $missingFields = implode("<br>", $this->data['mandatoryFields']);
+//     echo "<div style='color: red'>$missingFields</div>";
+// }
 ?>
-<script type="text/javascript" src="../../../Shared/tinymce/js/tinymce/tinymce.js"></script>
+<script src="https://cdn.tiny.cloud/1/o266b8aysxjdpdnudib5pwdhu8gy1ktpyzfmzz7nhwsa8f7d/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
 <script>$(document).ready(function(){
         const imgLists =             [<?php
             if (!empty($this->data['mediasList'])) {
@@ -46,7 +47,7 @@ if (!empty($this->data['mandatoryFields'])) {
         <div class="section1-new-post-container-wrapper">
             <form class="button-submit-deleted" method="post" action="<?= $_SERVER['REQUEST_URI'] ?>">
                 <div hidden>
-                    <input type="number" name="id" value="<?php echo $this->data['post']->getId() ?? '' ?>"/>
+                    <!-- <input type="number" name="id" value="<?php echo $this->data['post']->getId() ?? '' ?>"/> -->
                 </div>
                 <div hidden>
                     <input type="number" name="isDeleted" value="1"/>

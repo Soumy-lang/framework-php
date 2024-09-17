@@ -9,11 +9,12 @@ use App\Models\Post;
 use App\Models\Theme;
 use App\Models\Media;
 use App\Models\User;
+use App\Forms\AddArticle;
+use App\Forms\UpdateArticle;
 
 class Posts
 {
-
-    public function allPosts(): void
+    public function allPages(): void
     {
 
         $post = new Post();
@@ -23,110 +24,158 @@ class Posts
         $allPostView->assign("posts", $posts);
     }
 
-    public function post(): void
+    public function newPage(): void
+    {
+        $newPost = new View("Post/newpost", "back");
+    }
+
+    public function allArticles(): void
     {
 
-        $allowedTags='<p><strong><em><u><h1><h2><h3><h4><h5><h6><img>';
-        $allowedTags.='<li><ol><ul><span><div><br><ins><del>';
-        $info = "N'oubliez pas de sauvegarder";
-        $errorSlug = "";
+        $errors = [];
+        $success = [];
+        $article = new Post();
+        if (isset($_GET['action']) && isset($_GET['id'])) {
+            $articleId = $_GET['id'];
 
-        $media = new Media();
-        $errorSlug = "";
-        $medias = $media->getAllData("object");
-        if (count($medias) > 0) {
-            $mediasList = array();
-            foreach ($medias as $media) {
-                $mediasList[] = ['title' => $media->getTitle(), 'value' => $media->getFilepath()];
-            }
-        }
-
-        $post = new Post();
-        $post->setDefaultBody();
-        $theme = new Theme();
-        $retrievedTheme = $theme->getOneBy(['actif' => 1], 'object');
-
-        if (isset($_GET['id'])) {
-            $retrievedPost = $post->getOneBy(['id' => $_GET['id']], 'object');
-            if (!empty($retrievedPost)) {
-                $post = $retrievedPost;
-            }
-        }
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if ($_POST['isDeleted'] == 1) {
-                $post->delete(['id' => intval($_POST['id'])]);
-                header('Location: /bo/posts');
-                exit();
-            }
-
-            if (!empty($_POST['id'])) {
-            $post->setId(intval($_POST['id']));
-            }
-            $_POST['pageSlug'] = str_replace(' ', '', strtolower($_POST['pageSlug']));
-
-            $post->setSlug($_POST['pageSlug']);
-
-
-            $post2 = $post->getOneBy(['slug' => $_POST['pageSlug']], 'object');
-
-            if(!$post2 || $post2->getId() == $post->getId()){
-                $post->setTitle($_POST['pageTitle']);
-                $post->setBody(strip_tags(stripslashes($_POST['pageContent']), $allowedTags));
-                $isPublished = 0;
-                if (isset($_POST['isPublished'])) {
-                    $isPublished = $_POST['isPublished'] === "on" ? 1 : 0;
-
+            if ($_GET['action'] === 'delete') {
+                if ($article->delete(['id' => $articleId])) {
+                    $success[] = "L'article a été supprimé avec succès.";
+                } else {
+                    $errors[] = "La suppression a échoué.";
                 }
-                $post->setPublished($isPublished);
-                $post->setType('page');
-                $user = unserialize($_SESSION['user']);
-                $userUsername = $user->getUsername();
-                $post->setUserUsername($userUsername);
-                $missingFields = $post->validate();
-
-                if (count($missingFields) === 0) {
-                    $postId = $post->save();
-                    $savedPost = $post->getOneBy(['id' => $postId], 'object');
-                    $post = $savedPost;
-                    $info = "Page sauvegardée";
+            } elseif ($_GET['action'] === 'draft') {
+                if ($article->drafts(['id' => $articleId])) {
+                    $success[] = "L'article a été restauré avec succès";
+                } else {
+                    $errors[] = "Echoué";
                 }
-            }else{
-                $errorSlug = "Slug déjà existant, veuillez en choisir un autre";
+            } elseif ($_GET['action'] === 'publish') {
+                if ($article->publish(['id' => $articleId])) {
+                    $success[] = "L'article a été publié avec succès";
+                } else {
+                    $errors[] = "Echoué";
+                }
             }
         }
 
-        $newPosts = new View("Post/newpost", "back");
-        $newPosts->assign("info", $info);
-        $newPosts->assign("theme", $retrievedTheme->getTitre());
-        $newPosts->assign("post", $post);
-        $newPosts->assign("mandatoryFields", $missingFields ?? []);
-        $newPosts->assign("errorSlug", $errorSlug);
-        $newPosts->assign("mediasList", $mediasList ?? []);
+        $allArticles = $article->getAllArticles();
+        // $publishArticles = $article->getPublishedPost();
+        $draftArticles = $article->getDraft();
+
+        $myView = new View("Articles/allArticles", "back");
+        $myView->assign("articles", $allArticles);
+        // $myView->assign("publishArticles", $publishArticles);
+        $myView->assign("draftArticles", $draftArticles);
+        $myView->assign("errors", $errors);
+        $myView->assign("success", $success);
     }
 
-    public function save(): void
+    public function newArticle(): void
     {
+        // if( $_SERVER["REQUEST_METHOD"] == $config["config"]["method"] )
+        // {
+            $currentDate = date('Y-m-d H:i:s');
+            $article = new Post();
 
-        echo "save the post";
+            $article->setSlug(""); // Le slug de l'article
+            $article->setTitle($_REQUEST['Titre']); // Le titre de l'article
+            $article->setBody($_REQUEST['Contenu']); // Le contenu de l'article
+            $article->setPublished(1); // 1 pour publié, 0 pour brouillon
+            $article->setIsdeleted(0); // Non supprimé par défaut
+            $article->setCreatedat($currentDate); // Date de créationdon
+            $article->setType("article"); // Type d'article
+            $article->setUserUsername(""); // Nom d'utilisateur de l'auteur
+
+            $article->save(); //ajouter toutes les données dans la base de données
+            $success[] = "Ajouté";
+            header("Location: /bo/articles");
+
+        // }  
+        
     }
 
-    private function validateField(Post $newPost): bool
+    public function editArticle(): void
     {
 
-        return false;
+        $article = new Post();
+        if (isset($_GET['article']) && $_GET['article']) {
+            $articleId = $_GET['article'];
+            $selectedArticle = $article->getOneBy(['id' => $articleId]);
+
+            if ($selectedArticle) {
+                $formUpdate = new UpdateArticle();
+                $configUpdate = $formUpdate->getConfig($selectedArticle["title"], $selectedArticle["body"], $selectedArticle["id"]);
+                $errorsUpdate = [];
+                $successUpdate = [];
+
+                $myView = new View("Articles/editArticles", "back");
+                $myView->assign("article", $selectedArticle);
+                $myView->assign("configForm", $configUpdate);
+                $myView->assign("errorsForm", $errorsUpdate);
+                $myView->assign("successForm", $successUpdate);
+            } else {
+                echo "Article non trouvé.";
+            }
+        }
     }
 
-    public function update(): void
+    public function addArticles(): void
     {
+        $form = new AddArticle();
+        $config = $form->getConfig();
+        $myView = new View("Articles/addArticles", "back");
+        $myView->assign("configForm", $config);
+        $myView->assign("errorsForm", []);
+        $myView->assign("successForm", []);
 
-        echo "update the post";
     }
 
-    public function delete(): void
+    public function updateArticle(): void
     {
+        $userSerialized = $_SESSION['user'];
+        $user = unserialize($userSerialized);
+        $username = $user->getUsername();
 
-        echo "delete the post";
+        $formattedDate = date('Y-m-d H:i:s');
+
+        $title = $_REQUEST['Titre'];
+        $body = $_REQUEST['Contenu'];
+
+        $article = new Post();
+        $article->setTitle($title);
+        $article->setBody($body);
+
+        if($_GET['id']){
+            $post = new Post();
+            $articleId = $_GET['id'];
+            $selectedArticle = $post->getOneBy(['id' => $articleId]);
+
+            $article->setId($_GET['id']);
+            $article->setUpdatedAt($formattedDate);
+            $article->setCreatedAt($selectedArticle["createdat"]);
+            $article->setIsDeleted($selectedArticle["isdeleted"]);
+            $article->setPublished($selectedArticle["published"]);
+            $article->setSlug($selectedArticle["slug"]);
+            $article->setType($selectedArticle["type"]);
+            $article->setUserId($selectedArticle["user_username"]);
+
+
+        }else{
+            $article->setUpdatedAt($formattedDate);
+            $article->setCreatedAt($formattedDate);
+
+            $article->setIsDeleted(0);
+            $article->setPublished(1);
+            $article->setSlug("");
+            $article->setType("article");
+            $article->setUserId($username);
+
+        }
+
+        $article->save();
+        header("Location: /bo/articles");
+        exit();
     }
 
 }

@@ -10,8 +10,8 @@
     text-decoration: none; 
 }
 
-.button-group a:last-of-type {
-    margin-top: 20px; 
+.button{
+    height: 30px;
 }
 
 .button-primary {
@@ -64,8 +64,4 @@ input{
     padding: 2px;
 }
 
-textarea.input-form {
-    resize: vertical;
-    min-height: 100px;
-}
 

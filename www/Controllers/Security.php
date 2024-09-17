@@ -67,7 +67,7 @@ class Security
     public function register(): void
     {
         $form = new AddUser();
-        $config = $form->getConfig();
+        $config = $form->getConfig(); 
 
         $errors = [];
         $success = [];

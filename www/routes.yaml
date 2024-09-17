@@ -11,13 +11,13 @@
 /bo/medias:
   controller: Medias
   action: allMedias
-  # security: true
+  security: true
   # roles: [admin, editor]
 
 /bo/medias/media:
   controller: Medias
   action: media
-  # security: true
+  security: true
   # roles: [admin, editor]
 
 /register:
@@ -39,43 +39,43 @@
 /bo/posts:
   controller: Posts
   action: allPosts
-  # security: true
+  security: true
   # roles: [admin, editor]
 
 /bo/posts/post:
   controller: Posts
-  action: post
-  # security: true
+  action: newPost
+  security: true
   # roles: [admin, editor]
 
 /bo/settings:
   controller: SiteSetting
   action: index
-  # security: true
+  security: true
   # roles: [admin]
 
 /bo/user:
   controller: User
   action: allUsers
-  # security: true
+  security: true
   # roles: [admin, editor]
 
 /bo/user/view-user:
   controller: User
   action: viewUser
-  # security: true
+  security: true
   # roles: [admin, editor]
 
 /bo/user/edit-user:
   controller: User
   action: editUser
-  # security: true
+  security: true
   # roles: [admin]
 
 /bo/user/edit-password:
   controller: User
   action: editPassword
-  # security: true
+  security: true
   # roles: [admin]
 
 /recover-password:
@@ -87,57 +87,63 @@
   action: resetPassword
 
 /bo/articles:
-  controller: Articles
+  controller: Posts
   action: allArticles
-  # security: true
+  security: true
   # roles: [admin, editor]
 
 /bo/articles/add-article:
-  controller: Articles
+  controller: Posts
   action: addArticles
-  # security: true
+  security: true
+  # roles: [admin, editor]
+
+/bo/articles/new-article:
+  controller: Posts
+  action: newArticle
+  security: true
   # roles: [admin, editor]
 
 /bo/articles/update-article:
-  controller: Articles
+  controller: Posts
   action: updateArticle
-  # security: true
+  security: true
   # roles: [admin, editor]
 
 /bo/articles/edit-article:
-  controller: Articles
-  action: editArticles
-  # security: true
+  controller: Posts
+  action: editArticle
+  security: true
   # roles: [admin, editor]
 
 /bo/blogs:
   controller: Blogs
   action: allBlogs
-  # security: true
+  security: true
   # roles: [admin, editor]
 
 /bo/blogs/add-blog:
   controller: Blogs
   action: addBlogs
-  # security: true
+  security: true
   # roles: [admin, editor]
 
 /bo/blogs/edit-blog:
   controller: Blogs
   action: editBlogs
-  # security: true
+  security: true
   # roles: [admin, editor]
 
 /bo/blogs/update-blog:
   controller: Blogs
   action: updateBlog
-  # security: true
+  security: true
   # roles: [admin, editor]
 
 /bo/themes:
   controller: Themes
   action: allThemes
-  # security: true
+  security: true
   # roles: [admin]
 
 /themes/boulangerie-theme:
