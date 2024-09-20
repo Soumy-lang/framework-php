@@ -188,9 +188,9 @@ class Security
             $mail->Port = 587;
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->SMTPAuth = true; // Activer l'authentification SMTP
-            $mail->Username = 'spprtntrst@gmail.com'; // SMTP username
-            $mail->Password = 'hcnplwiqpmmqbwdp'; // SMTP password
-            $mail->setFrom('spprtntrst@gmail.com', 'Support Intersite');
+            $mail->Username = 'xxxxxxxx@gmail.com'; // SMTP username
+            $mail->Password = 'xxxxxxxx'; // SMTP password
+            $mail->setFrom('xxxxxxxx@gmail.com', 'Support Intersite');
             $mail->addAddress($email);
             $mail->Subject = 'Recuperation de mot de passe Intersite';
 
@@ -215,9 +215,9 @@ class Security
             $mail->Port = 587;
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->SMTPAuth = true; // Activer l'authentification SMTP
-            $mail->Username = 'spprtntrst@gmail.com'; // SMTP username
-            $mail->Password = 'hcnplwiqpmmqbwdp'; // SMTP password
-            $mail->setFrom('spprtntrst@gmail.com', 'Support Intersite');
+            $mail->Username = 'xxxxxxxx@gmail.com'; // SMTP username
+            $mail->Password = 'xxxxxxxx'; // SMTP password
+            $mail->setFrom('xxxxxxxx@gmail.com', 'Support Intersite');
             $mail->addAddress($email);
             $mail->Subject = 'Activation de votre compte Intersite';
 
