@@ -4,7 +4,7 @@
 
 </p>
 <section class="dashboard-cards">
-    <a href="/bo/posts">
+    <a href="/bo/pages">
 		<div class="block-card-dashboard">
 			<div class="block-card-dashboard-total blue">
 				<img src="/Views/styles/dist/images/pages.png" alt="pages-image">

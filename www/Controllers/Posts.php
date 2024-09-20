@@ -19,10 +19,8 @@ class Posts
 
     public function allPages(): void
     {
-
         $post = new Post();
         $posts = $post->getAllData("object", "type", "page");
-
         $allPostView = new View("Post/post", "back");
         $allPostView->assign("posts", $posts);
     }
@@ -84,6 +82,22 @@ class Posts
                 echo "Non trouvé.";
             }
         }
+    }
+
+    public function deletePage(): void
+    {
+        $page = new Post();
+        if (isset($_GET['action']) && isset($_GET['id'])) {
+            $pageId = $_GET['id'];
+            if ($_GET['action'] === 'delete') {
+                if ($page->delete(['id' => $pageId])) {
+                    $success[] = "La page a été supprimé avec succès.";
+                } else {
+                    $errors[] = "La suppression a échoué.";
+                }
+            }
+        }
+        header("Location: /bo/pages");
     }
 
     public function allArticles(): void

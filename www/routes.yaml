@@ -6,7 +6,7 @@
   controller: Main
   action: home
   security: true
-  # roles: [admin, editor]
+  
 
 /register:
   controller: Security
@@ -28,25 +28,31 @@
   controller: Posts
   action: allPages
   security: true
-  # roles: [admin, editor]
+  
 
 /bo/pages/add-page:
   controller: Posts
   action: addPage
   security: true
-  # roles: [admin, editor]
+  
 
 /bo/pages/new-page:
   controller: Posts
   action: newPage
   security: true
-  # roles: [admin, editor]
+  
 
 /bo/pages/edit-page:
   controller: Posts
   action: editPage
   security: true
-  # roles: [admin, editor]
+  
+
+/bo/pages/delete-page:
+  controller: Posts
+  action: deletePage
+  security: true
+  
 
 /bo/settings:
   controller: SiteSetting
@@ -58,13 +64,13 @@
   controller: User
   action: allUsers
   security: true
-  # roles: [admin, editor]
+  
 
 /bo/user/view-user:
   controller: User
   action: viewUser
   security: true
-  # roles: [admin, editor]
+  
 
 /bo/user/edit-user:
   controller: User
@@ -90,31 +96,31 @@
   controller: Posts
   action: allArticles
   security: true
-  # roles: [admin, editor]
+  
 
 /bo/articles/add-article:
   controller: Posts
   action: addArticles
   security: true
-  # roles: [admin, editor]
+  
 
 /bo/articles/new-article:
   controller: Posts
   action: newArticle
   security: true
-  # roles: [admin, editor]
+  
 
 /bo/articles/update-article:
   controller: Posts
   action: updateArticle
   security: true
-  # roles: [admin, editor]
+  
 
 /bo/articles/edit-article:
   controller: Posts
   action: editArticle
   security: true
-  # roles: [admin, editor]
+  
 
 /run:
   controller: Install

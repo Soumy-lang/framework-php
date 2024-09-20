@@ -15,6 +15,9 @@ use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 
 require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../core/View.php';
+require __DIR__ . '/../core/Verificator.php';
+require __DIR__ . '/../core/DB.php';
 
 date_default_timezone_set('Europe/Paris');
 

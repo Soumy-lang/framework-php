@@ -7,6 +7,11 @@ use App\Controllers\Main;
 use App\Controllers\Security;
 use App\Models\User;
 use App\Core\PageBuilder;
+use App\Core\View;
+
+require __DIR__ . '/dependances/spyc.php'; 
+require 'vendor/autoload.php';
+
 
 date_default_timezone_set('Europe/Paris');
 spl_autoload_register("App\myAutoloader"); //pour enregistrer une fonction d'autoload personnalisée
@@ -15,6 +20,11 @@ spl_autoload_register("App\myAutoloader"); //pour enregistrer une fonction d'aut
 $uri = strtolower($_SERVER["REQUEST_URI"]); // Normalise l'URI
 $uri = strtok($uri, "?"); // Enlève les paramètres GET
 $uri = strlen($uri) > 1 ? rtrim($uri, "/") : $uri; // Nettoie l'URI
+
+
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 
 // Exclut la logique de routage pour /install si config.php n'existe pas
@@ -36,12 +46,14 @@ function myAutoloader(String $class): void
     }
 }
 
-
-
 if(!file_exists("routes.yaml")){ //pour vérifier si le fichier routes existe
     die("Le fichier de routing n'existe pas");
 }
-$listOfRoutes = yaml_parse_file("routes.yaml"); //pour récupérer le contenu du fichier routes
+//$listOfRoutes = yaml_parse_file("routes.yaml"); //pour récupérer le contenu du fichier routes
+$listOfRoutes = spyc_load_file("routes.yaml");
+if ($listOfRoutes === false) {
+    die("Erreur lors de la lecture du fichier YAML.");
+}
 
 
 if( !empty($listOfRoutes[$uri]) ) { // si l'uri existe dans le fichier routes
@@ -113,3 +125,4 @@ else{ //si l'uri n'existe pas dans le fichier routes
     $customError = new Error();
     $customError->page404();
 }
+

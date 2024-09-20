@@ -13,6 +13,7 @@
     plugins: 'image',
     toolbar: 'image',
     image_title: true,
+    paste_as_text: true, 
     automatic_uploads: true,
     images_upload_url: '/upload-image',
     file_picker_types: 'image',
@@ -34,4 +35,6 @@
       }
     }
   });
+
+
 </script>

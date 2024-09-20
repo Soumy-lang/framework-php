@@ -1,0 +1,5 @@
+runtime: php83 
+
+handlers:
+- url: /.*
+  script: auto
