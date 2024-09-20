@@ -1,6 +1,6 @@
 <script src="https://cdn.tiny.cloud/1/o266b8aysxjdpdnudib5pwdhu8gy1ktpyzfmzz7nhwsa8f7d/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
-<h2>Ajouter une nouvelle page</h2>
+<h2>Apperçu de la page</h2>
 <section class="middle-section">
     <div class="form-bloc">
         <?php $this->includeComponent("form", $configForm, $errorsForm, $successForm, "button button-primary");?>
@@ -35,4 +35,3 @@
     }
   });
 </script>
-

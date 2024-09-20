@@ -7,12 +7,12 @@ body {
   margin: 0;
 }
 
-.art-content {
-  height: 100px;
+textarea {
+  height: 200px;
 }
 
 #header.back-office-header {
-  background-color: #132c19;
+  background-color: var(--header-color);
   padding: 10px 0;
 }
 
@@ -41,14 +41,14 @@ body {
 }
 
 .navbar ul li a {
-  color: white;
+  color: var(--white-color);
   text-decoration: none;
   font-size: 16px;
   padding: 10px 20px;
 }
 
 .navbar ul li a:hover {
-  color: black;
+  color: var(--black-color);
 }
 
 .navbar ul li:first-child a {
@@ -74,8 +74,18 @@ body {
   height: 24px;
 }
 
+.pages-title {
+  color: var(--white-text);
+  font-weight: normal;
+}
+
+.pages-title.active {
+  color: var(--black-color);
+  font-weight: bold;
+}
+
 main.bo-connexion-content {
-  background-color: white;
+  background-color: var(--white-color);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -136,7 +146,7 @@ main.bo-connexion-content {
 }
 
 .form-group label {
-  flex: 0 0 150px;
+  flex: 0 0 15px;
   margin-right: 10px;
   font-weight: bold;
 }
@@ -153,14 +163,13 @@ input {
   padding: 2px;
 }
 
-/* Centrer le titre et le sous-titre */
 h2, .subtitle {
   text-align: center;
 }
 
 .block-card-dashboard-total img {
-  width: 80px; /* Taille uniforme pour toutes les images */
-  height: 80px;
+  width: 200px;
+  height: 200px;
   margin-bottom: 10px;
 }
 
@@ -175,7 +184,7 @@ h2, .subtitle {
 .block-card-dashboard {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centre le contenu dans chaque carte */
+  align-items: center;
   text-align: center;
 }
 
@@ -311,7 +320,7 @@ h2, .subtitle {
 }
 
 .section4-add {
-  text-align: right;
+  text-align: left;
 }
 
 #all-blogs {
@@ -385,8 +394,10 @@ h2, .subtitle {
   --button-bg-color: #0e932d;
   --button-bg-hover-color: #41ec69;
   --white-text: white;
+  --black-color: black;
   --blue-color: #007bff;
   --red-color: #dc3545;
+  --header-color: #132c19;
   --border: #ddd;
   --th-background: #f1f1f1;
   --text-content-color: rgba(0, 0, 0, 0.15);

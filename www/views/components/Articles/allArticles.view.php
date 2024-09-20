@@ -12,7 +12,7 @@
 </section>
 <section class="all-blogs" id="all-blogs">
     <?php
-        foreach ($articles as $articleData): ?>
+        foreach ($articles as $articleData):?>
         <div class="one-blog">
             <div class="edit-icon">
                 <a href="/bo/articles/edit-article?article=<?php echo $articleData['id']; ?>" title="Modifier" class="link-primary"><i class="fa fa-pencil" aria-hidden="true"></i></a>

@@ -1,6 +1,6 @@
 #header.back-office-header {
-    background-color: #132c19; 
-    padding: 10px 0;
+    background-color: var(--header-color);
+    padding: to-px(10) 0;
 }
 
 .navbar{
@@ -11,7 +11,7 @@
 
 .disconnect-button{
     align-self: flex-end;
-    padding: 20px;
+    padding: to-px(20);
 }
 
 .navbar ul {
@@ -24,29 +24,29 @@
 }
 
 .navbar ul li {
-    margin: 0 15px; 
+    margin: 0 to-px(15); 
 }
 
 .navbar ul li a {
-    color: white; 
+    color: var(--white-color); 
     text-decoration: none;
-    font-size: 16px;
-    padding: 10px 20px;
+    font-size: to-px(16);
+    padding: to-px(10) to-px(20);
 }
 
 .navbar ul li a:hover {
-    color: black;
+    color: var(--black-color);
 }
 
 .navbar ul li:first-child a {
-    font-size: 22px;
+    font-size: to-px(22);
     font-weight: bold;
-    padding: 12px 25px; 
-    border-radius: 5px;
+    padding: to-px(12) to-px(25); 
+    border-radius: to-px(5);
 }
 
 .back-office-content {
-    padding: 20px;
+    padding: to-px(20);
 }
 
 .btn-logout {
@@ -57,7 +57,16 @@
 }
 
 .btn-logout img {
-    width: 24px;
-    height: 24px;
+    width: to-px(24);
+    height: to-px(24);
 }
 
+.pages-title {
+    color: var(--white-text); 
+    font-weight: normal;
+}
+
+.pages-title.active {
+    color: var(--black-color);
+    font-weight: bold;
+}

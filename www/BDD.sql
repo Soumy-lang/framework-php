@@ -7,6 +7,27 @@ DROP TABLE IF EXISTS `{prefix}_user`;
 
 -- Création des tables
 
+-- Table `user`
+CREATE TABLE `{prefix}_user` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `firstname` VARCHAR(25) NOT NULL,
+    `lastname` VARCHAR(50) NOT NULL,
+    `email` VARCHAR(320) NOT NULL,
+    `username` VARCHAR(25) NOT NULL,
+    `pwd` VARCHAR(255) NOT NULL,
+    `status` SMALLINT DEFAULT '0' NOT NULL,
+    `img_path` VARCHAR(255),
+    `role` VARCHAR(15) DEFAULT 'user',
+    `reset_token` VARCHAR(255),
+    `reset_expires` TIMESTAMP,
+    `createdat` TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    `updatedat` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `activation_token` VARCHAR(255),
+    `is_active` BOOLEAN DEFAULT FALSE,
+    UNIQUE KEY (`email`),
+    UNIQUE KEY (`username`)
+) ENGINE=InnoDB;
+
 -- Table `media`
 CREATE TABLE `{prefix}_media` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
@@ -40,7 +61,7 @@ FOREIGN KEY (`user_username`) REFERENCES `{prefix}_user` (`username`) ON UPDATE 
 
 -- Table `sitesetting`
 CREATE TABLE `{prefix}_sitesetting` (
-    `clés` VARCHAR(45) NOT NULL,
+    `cles` VARCHAR(45) NOT NULL,
     `valeur` VARCHAR(255) NOT NULL,
     `createdat` TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
     `updatedat` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -56,28 +77,3 @@ CREATE TABLE `{prefix}_theme` (
     `actif` SMALLINT DEFAULT '0' NOT NULL
 ) ENGINE=InnoDB;
 
--- Table `user`
-CREATE TABLE `{prefix}_user` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `firstname` VARCHAR(25) NOT NULL,
-    `lastname` VARCHAR(50) NOT NULL,
-    `email` VARCHAR(320) NOT NULL,
-    `username` VARCHAR(25) NOT NULL,
-    `pwd` VARCHAR(255) NOT NULL,
-    `status` SMALLINT DEFAULT '0' NOT NULL,
-    `img_path` VARCHAR(255),
-    `role` VARCHAR(15) DEFAULT 'user',
-    `reset_token` VARCHAR(255),
-    `reset_expires` TIMESTAMP,
-    `createdat` TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    `updatedat` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    `activation_token` VARCHAR(255),
-    `is_active` BOOLEAN DEFAULT FALSE,
-    UNIQUE KEY (`email`),
-    UNIQUE KEY (`username`)
-) ENGINE=InnoDB;
-
--- Insertion des données de thème
-INSERT INTO `{prefix}_theme` (`id`, `titre`, `actif`) VALUES
-(1, 'music-template', '0'),
-(2, 'boulangerie-template', '1');

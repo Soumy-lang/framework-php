@@ -1,4 +1,4 @@
 .env
-www/config.php
 www/configdb.php
+www/config-local.php
 www/Shared

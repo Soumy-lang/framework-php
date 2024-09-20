@@ -9,8 +9,8 @@
 }
 
 .user-table th, .user-table td {
-    padding: 10px;
-    border: 1px solid var(--border);
+    padding: to-px(10);
+    border: to-px(1) solid var(--border);
     text-align: center;
     vertical-align: middle;
 }
@@ -30,23 +30,23 @@
 
 .user-info {
     text-align: center; 
-    padding: 20px; 
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    max-width: 600px; 
-    margin: 20px auto; 
-    border: 1px solid var(--border); 
+    padding: to-px(20); 
+    border-radius: to-px(10); 
+    box-shadow: 0 to-px(4) to-px(8) rgba(0, 0, 0, 0.1); 
+    max-width: to-px(600); 
+    margin: to-px(20) auto; 
+    border: to-px(1) solid var(--border); 
 }
 
 .user-info .subtitle {
     font-size: 1.5em; 
     font-weight: bold;
-    margin-bottom: 10px; 
+    margin-bottom: to-px(10); 
 }
 
 .user-info .text {
     font-size: 1em; 
-    margin-bottom: 10px; 
+    margin-bottom: to-px(10); 
 }
 
 .user-info strong {
@@ -74,5 +74,3 @@
     display: flex;
     flex-direction: row;
 }
-
-

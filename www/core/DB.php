@@ -41,22 +41,38 @@ class DB
 
     public function __wakeup() {}
 
-    public function getAllData(string $return = "array") //pour récupérer tous les enregistrements de la bdd
+    public function getAllData(string $return = "array", string $column = null, $value = null)
     {
+        // Commence par la requête de base
         $sql = "SELECT * FROM " . $this->table;
+
+        // Si une colonne et une valeur sont fournies, ajoute la clause WHERE
+        if ($column !== null && $value !== null) {
+            $sql .= " WHERE " . $column . " = :value";
+        }
+
+        // Prépare la requête
         $queryPrepared = $this->pdo->prepare($sql);
+
+        // Si une valeur est donnée, on la lie à la requête préparée
+        if ($column !== null && $value !== null) {
+            $queryPrepared->bindValue(':value', $value);
+        }
+
+        // Exécute la requête
         $queryPrepared->execute();
 
-        if($return == "object") {
-            // les resultats seront sous forme d'objet de la classe appelée
+        // Définition du mode de récupération des résultats
+        if ($return == "object") {
             $queryPrepared->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
         } else {
-            // pour récupérer un tableau associatif
             $queryPrepared->setFetchMode(\PDO::FETCH_ASSOC);
         }
 
+        // Retourne tous les résultats
         return $queryPrepared->fetchAll();
     }
+
 
     public function getDraftData(string $return = "array") //pour récupérer tous les enregistrements où published = 0
     {

@@ -1,63 +1,24 @@
-/* Centrer le titre et le sous-titre */
 h2, .subtitle {
     text-align: center;
 }
 
 .block-card-dashboard-total img {
-    width: 80px; /* Taille uniforme pour toutes les images */
-    height: 80px;
-    margin-bottom: 10px;
+    width: to-px(200); 
+    height: to-px(200);
+    margin-bottom: to-px(10);
 }
 
 .dashboard-cards{
     display: flex;
     flex-direction: row;
     justify-content: center; 
-    gap: 20px;
-    padding: 20px 0;
+    gap: to-px(20);
+    padding: to-px(20) 0;
 }
 
 .block-card-dashboard {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centre le contenu dans chaque carte */
+    align-items: center; 
     text-align: center;
 }
-
-// /* Styles pour la section du tableau de bord */
-// .dashboard-cards {
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: center; /* Centre les éléments horizontalement */
-//     gap: 20px; /* Espacement entre les cartes */
-//     padding: 20px 0;
-// }
-
-// /* Style pour chaque carte du tableau de bord */
-
-
-// .block-card-dashboard-total {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     width: 150px; /* Largeur fixe pour chaque carte */
-//     height: 200px; /* Hauteur fixe pour chaque carte */
-//     padding: 10px;
-//     border: 1px solid #ccc; /* Optionnel : Bordure légère pour délimiter les cartes */
-// }
-
-
-
-// .block-card-dashboard-total-text {
-//     text-align: center;
-// }
-
-// .title {
-//     font-size: 1.2em;
-//     margin-bottom: 5px;
-// }
-
-// .number {
-//     font-size: 1.5em;
-//     font-weight: bold;
-// }

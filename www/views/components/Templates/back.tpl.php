@@ -27,19 +27,19 @@
                 <div class="navbar_toggle_content" id="content">
                     <ul>
                         <li><a href="/bo/dashboard" class="pages-list">
-                            <div class="pages-title">Tableau de bord</div></a>
+                            <div class="pages-title" id="link-dashboard">Tableau de bord</div></a>
                         </li>
-                        <li><a href="/bo/posts" class="accordion">
-                            <div class="pages-title">Pages</div></a>
+                        <li><a href="/bo/pages" class="accordion">
+                            <div class="pages-title" id="link-page">Pages</div></a>
                         </li>
                         <li><a href="/bo/articles" class="accordion">
-                            <div class="pages-title">Articles</div></a>
+                            <div class="pages-title" id="link-article">Articles</div></a>
                         </li>
                         <li><a href="/bo/user" class="accordion">
-                            <div class="pages-title">Utilisateurs</div></a>
+                            <div class="pages-title" id="link-user">Utilisateurs</div></a>
                         </li>
                         <li><a href="/bo/settings" class="accordion">
-                            <div class="pages-title">Réglages</div></a>
+                            <div class="pages-title" id="link-setting">Réglages</div></a>
                         </li>
                     </ul>
                 </div>
@@ -57,3 +57,26 @@
         </main>
     </body>
 </html>
+
+<script>
+    window.onload = function() {
+        // Récupère la partie de l'URL après '/bo/'
+        const currentPath = window.location.pathname.split('/bo/')[1].split('/')[0];
+        
+        // Crée une correspondance entre la partie URL et les IDs des liens
+        const pageMap = {
+            'dashboard': 'link-dashboard',
+            'pages': 'link-page',
+            'articles': 'link-article',
+            'user': 'link-user',
+            'settings': 'link-setting'
+        };
+
+        // Si la partie URL correspond à une clé dans pageMap, on applique la classe 'active'
+        if (pageMap[currentPath]) {
+            document.getElementById(pageMap[currentPath]).classList.add('active');
+        }
+    };
+
+
+</script>

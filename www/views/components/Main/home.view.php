@@ -29,7 +29,7 @@
     <a href="/bo/articles">
 		<div class="block-card-dashboard">
 			<div class="block-card-dashboard-total green">
-				<img src="/Views/styles/dist/images/article.png" alt="comment-image">
+				<img src="/Views/styles/dist/images/articles.png" alt="comment-image">
 				<div class="block-card-dashboard-total-text">
 					<div class="title">Articles</div>
 					<div class="number"><?php echo htmlspecialchars($elementsCount['articles']); ?></div>

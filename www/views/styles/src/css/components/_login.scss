@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: to-px(10);
 }
 
 .button-group a {
@@ -11,16 +11,16 @@
 }
 
 .button{
-    height: 30px;
+    height: to-px(30);
 }
 
 .button-primary {
     background-color: var(--button-bg-color);
     color: var(--white-text);
-    padding: 0 10px;
+    padding: 0 to-px(10);
     border: none;
-    border-radius: 8px;
-    font-size: 16px;
+    border-radius: to-px(8);
+    font-size: to-px(16);
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     display: inline-block;
@@ -29,7 +29,7 @@
 
 .button-primary:hover {
     background-color: var(--button-bg-hover-color); 
-    transform: translateY(-2px);
+    transform: translateY(to-px(-2));
 }
 
 .button-primary:active {
@@ -41,14 +41,14 @@
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: to-px(15);
     display: flex;
     flex-direction: column;
 }
 
 .form-group label {
-    flex: 0 0 150px; 
-    margin-right: 10px;
+    flex: 0 0 to-px(15); 
+    margin-right: to-px(10);
     font-weight: bold;
 }
 
@@ -58,10 +58,10 @@
 
 input{
     border: 0.2px solid;
-    border-radius: 5px;
-    margin-bottom: 8px;
-    height: 30px;
-    padding: 2px;
+    border-radius: to-px(5);
+    margin-bottom: to-px(8);
+    height: to-px(30);
+    padding: to-px(2);
 }
 
 

@@ -11,14 +11,17 @@ use App\Models\Media;
 use App\Models\User;
 use App\Forms\AddArticle;
 use App\Forms\UpdateArticle;
+use App\Forms\AddPage;
+use App\Forms\UpdatePage;
 
 class Posts
 {
+
     public function allPages(): void
     {
 
         $post = new Post();
-        $posts = $post->getAllData("object");
+        $posts = $post->getAllData("object", "type", "page");
 
         $allPostView = new View("Post/post", "back");
         $allPostView->assign("posts", $posts);
@@ -26,7 +29,61 @@ class Posts
 
     public function newPage(): void
     {
-        $newPost = new View("Post/newpost", "back");
+        $userSerialized = $_SESSION['user'];
+        $user = unserialize($userSerialized);
+        $username = $user->getUsername();
+
+        $currentDate = date('Y-m-d H:i:s');
+        $page = new Post();
+
+        $page->setSlug(""); 
+        $page->setTitle($_REQUEST['Titre']);
+        $page->setBody($_REQUEST['Contenu']); 
+        $page->setPublished(1); 
+        $page->setIsdeleted(0); 
+        $page->setCreatedat($currentDate); 
+        $page->setType("page");
+        $page->setUserId($username);
+
+        $page->save(); 
+        $success[] = "Ajouté";
+        header("Location: /bo/pages");
+    }
+
+    public function addPage(): void
+    {
+        $form = new AddPage();
+        $config = $form->getConfig();
+        $myView = new View("Post/newpost", "back");
+        $myView->assign("configForm", $config);
+        $myView->assign("errorsForm", []);
+        $myView->assign("successForm", []);
+
+    }
+
+    public function editPage(): void
+    {
+
+        $page = new Post();
+        if (isset($_GET['page']) && $_GET['page']) {
+            $pageId = $_GET['page'];
+            $selectedPage = $page->getOneBy(['id' => $pageId]);
+
+            if ($selectedPage) {
+                $formUpdate = new UpdatePage();
+                $configUpdate = $formUpdate->getConfig($selectedPage["title"], $selectedPage["body"], $selectedPage["id"]);
+                $errorsUpdate = [];
+                $successUpdate = [];
+
+                $myView = new View("Post/editpage", "back");
+                $myView->assign("page", $selectedPage);
+                $myView->assign("configForm", $configUpdate);
+                $myView->assign("errorsForm", $errorsUpdate);
+                $myView->assign("successForm", $successUpdate);
+            } else {
+                echo "Non trouvé.";
+            }
+        }
     }
 
     public function allArticles(): void
@@ -59,13 +116,11 @@ class Posts
             }
         }
 
-        $allArticles = $article->getAllArticles();
-        // $publishArticles = $article->getPublishedPost();
+        $allArticles = $article->getAllData("array", "type", "article");
         $draftArticles = $article->getDraft();
 
         $myView = new View("Articles/allArticles", "back");
         $myView->assign("articles", $allArticles);
-        // $myView->assign("publishArticles", $publishArticles);
         $myView->assign("draftArticles", $draftArticles);
         $myView->assign("errors", $errors);
         $myView->assign("success", $success);
@@ -73,25 +128,25 @@ class Posts
 
     public function newArticle(): void
     {
-        // if( $_SERVER["REQUEST_METHOD"] == $config["config"]["method"] )
-        // {
-            $currentDate = date('Y-m-d H:i:s');
-            $article = new Post();
+        $userSerialized = $_SESSION['user'];
+        $user = unserialize($userSerialized);
+        $username = $user->getUsername();
 
-            $article->setSlug(""); // Le slug de l'article
-            $article->setTitle($_REQUEST['Titre']); // Le titre de l'article
-            $article->setBody($_REQUEST['Contenu']); // Le contenu de l'article
-            $article->setPublished(1); // 1 pour publié, 0 pour brouillon
-            $article->setIsdeleted(0); // Non supprimé par défaut
-            $article->setCreatedat($currentDate); // Date de créationdon
-            $article->setType("article"); // Type d'article
-            $article->setUserUsername(""); // Nom d'utilisateur de l'auteur
+        $currentDate = date('Y-m-d H:i:s');
+        $article = new Post();
 
-            $article->save(); //ajouter toutes les données dans la base de données
-            $success[] = "Ajouté";
-            header("Location: /bo/articles");
+        $article->setSlug(""); 
+        $article->setTitle($_REQUEST['Titre']); 
+        $article->setBody($_REQUEST['Contenu']); 
+        $article->setPublished(1); 
+        $article->setIsdeleted(0);
+        $article->setCreatedat($currentDate); 
+        $article->setType("article"); 
+        $article->setUserId($username);
 
-        // }  
+        $article->save();
+        $success[] = "Ajouté";
+        header("Location: /bo/articles");
         
     }
 

@@ -1,31 +1,33 @@
+@import '../partials/functions';
+
 #all-blogs {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(to-px(300), 1fr));
+    gap: to-px(20);
+    padding: to-px(20);
     
 }
 
 .one-blog {
     background-color: var(--white-color);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    border-radius: to-px(8);
+    box-shadow: 0 to-px(4) to-px(8) rgba(0, 0, 0, 0.1);
+    padding: to-px(20);
     transition: transform 0.2s, box-shadow 0.2s;
     position: relative;
 }
 
 .one-blog:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px var(--text-content-color);
+    transform: translateY(to-px(-5));
+    box-shadow: 0 to-px(6) to-px(12) var(--text-content-color);
 }
 
 .edit-icon {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: to-px(10);
+    right: to-px(10);
     display: flex;
-    gap: 10px;
+    gap: to-px(10);
 }
 
 .edit-icon a {
@@ -48,13 +50,13 @@
 .blog-title h4 {
     font-size: 1.5rem;
     margin: 0;
-    padding-bottom: 10px;
+    padding-bottom: to-px(10);
 }
 
 .article-text {
     font-size: 1rem;
     line-height: 1.5;
-    margin-bottom: 20px;
+    margin-bottom: to-px(20);
     overflow-wrap: break-word; 
     white-space: normal; 
     word-break: break-word;

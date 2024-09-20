@@ -8,18 +8,6 @@
   security: true
   # roles: [admin, editor]
 
-/bo/medias:
-  controller: Medias
-  action: allMedias
-  security: true
-  # roles: [admin, editor]
-
-/bo/medias/media:
-  controller: Medias
-  action: media
-  security: true
-  # roles: [admin, editor]
-
 /register:
   controller: Security
   action: register
@@ -36,15 +24,27 @@
   controller: Security
   action: logout
 
-/bo/posts:
+/bo/pages:
   controller: Posts
-  action: allPosts
+  action: allPages
   security: true
   # roles: [admin, editor]
 
-/bo/posts/post:
+/bo/pages/add-page:
   controller: Posts
-  action: newPost
+  action: addPage
+  security: true
+  # roles: [admin, editor]
+
+/bo/pages/new-page:
+  controller: Posts
+  action: newPage
+  security: true
+  # roles: [admin, editor]
+
+/bo/pages/edit-page:
+  controller: Posts
+  action: editPage
   security: true
   # roles: [admin, editor]
 
@@ -116,44 +116,7 @@
   security: true
   # roles: [admin, editor]
 
-/bo/blogs:
-  controller: Blogs
-  action: allBlogs
-  security: true
-  # roles: [admin, editor]
-
-/bo/blogs/add-blog:
-  controller: Blogs
-  action: addBlogs
-  security: true
-  # roles: [admin, editor]
-
-/bo/blogs/edit-blog:
-  controller: Blogs
-  action: editBlogs
-  security: true
-  # roles: [admin, editor]
-
-/bo/blogs/update-blog:
-  controller: Blogs
-  action: updateBlog
-  security: true
-  # roles: [admin, editor]
-
-/bo/themes:
-  controller: Themes
-  action: allThemes
-  security: true
-  # roles: [admin]
-
-/themes/boulangerie-theme:
-  controller: Themes
-  action: boulangerie
-
 /run:
   controller: Install
   action: run
 
-/themes/music-theme:
-  controller: Themes
-  action: music

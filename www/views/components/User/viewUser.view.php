@@ -1,5 +1,5 @@
 <section class="user-profile">
-        <img src="<?= !empty($userData['img_path']) ? htmlspecialchars($userData['img_path']) : '/views/styles/dist/images/profil.png' ?>" alt="Image de profil">
+        <!-- <img src="<?= !empty($userData['img_path']) ? htmlspecialchars($userData['img_path']) : '/views/styles/dist/images/profil.png' ?>" alt="Image de profil"> -->
         <div class="user-info">
             <p class="subtitle"><?= htmlspecialchars($userData['firstname']) . ' ' . htmlspecialchars($userData['lastname']) ?></p>
             <p class="text"><strong>Email :</strong> <?= htmlspecialchars($userData['email']) ?></p>

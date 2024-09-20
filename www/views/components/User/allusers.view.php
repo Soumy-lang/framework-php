@@ -1,4 +1,4 @@
-<h3 class="box-title">Tous les utilisateurs</h3>
+<h2 class="box-title">Tous les utilisateurs</h2>
     <?php if (!empty($errors)): ?>
         <div class="error">
             <?php foreach ($errors as $error): ?>

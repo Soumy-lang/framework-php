@@ -1,3 +1,5 @@
+@import '../partials/functions';
+
 *{
     
     font-family: 'Source Code Pro', monospace;
@@ -8,6 +10,6 @@ body {
     margin: 0;
 }
 
-.art-content{
-    height: 100px;
+textarea{
+    height: to-px(200);
 }
