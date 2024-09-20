@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 use App\Core\DB;
+// require_once __DIR__ . '/../core/DB.php';
 
 class User extends DB
 {
@@ -18,6 +19,11 @@ class User extends DB
     protected ?string $activation_Token = null;
     protected bool $is_Active;
     protected ?string $img_path = null;
+
+    // public $createdat;
+    // public $updatedat;
+    // public $activation_token;
+    // public $is_active;
 
 
 

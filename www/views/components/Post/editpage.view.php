@@ -12,6 +12,7 @@
     selector: '#mytextarea',
     plugins: 'image',
     toolbar: 'image',
+    valid_elements: '*[*]',
     image_title: true,
     paste_as_text: true, 
     automatic_uploads: true,
@@ -35,6 +36,5 @@
       }
     }
   });
-
 
 </script>

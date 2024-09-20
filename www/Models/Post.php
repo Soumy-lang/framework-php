@@ -3,6 +3,8 @@
 namespace App\Models;
 use App\Core\DB;
 
+// require_once __DIR__ . '/../core/DB.php';
+
 
 class Post extends DB
 {
@@ -21,6 +23,7 @@ class Post extends DB
     protected ?string $theme;
 
     protected string $user_username;
+
 
     public function __construct()
     {
@@ -188,10 +191,6 @@ class Post extends DB
     public function getAllArticles() {
         return $this->getAllData("article");
     }
-
-    // public function getPublishedPost() {
-    //     return $this->getPublishedPost("article");
-    // }
 
     public function getDeleted() {
         return $this->getDeletedData("article");

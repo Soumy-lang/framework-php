@@ -2,7 +2,7 @@
 namespace App\Core;
 date_default_timezone_set('Europe/Paris');
 
-require __DIR__ . '/../configdb.php';
+require __DIR__ . '/../config-local.php';
 class DB
 {
     private static ?DB $instance = null;

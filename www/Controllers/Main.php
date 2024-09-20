@@ -3,9 +3,10 @@ namespace App\Controllers;
 use App\Core\View;
 use App\Models\User;
 use App\Models\Post;
-use App\Models\Media;
-use App\Models\Comment;
-use App\Models\Theme;
+
+require __DIR__ . '/../core/View.php';
+require __DIR__ . '/../Models/User.php';
+require __DIR__ . '/../Models/Post.php';
 
 class Main
 {
@@ -13,15 +14,11 @@ class Main
     {
         $user = new User();
         $post = new Post();
-        $media = new Media();
-        $themes = new Theme();
 
         $elementsCount = [
             'users' => $user->getNbElements(),
             'pages' => $post->getElementsByType('type', 'page'),
-            'medias' => $media->getNbElements(),
             'articles' => $post->getElementsByType('type', 'article'),
-            'themes' => $themes->getNbElements(),
         ];
 
         // Initialiser les variables avec des valeurs par défaut

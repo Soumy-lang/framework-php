@@ -33,7 +33,7 @@
                 <tr>
                     <td><?php echo $userData['firstname']; ?></td>
                     <td><?php echo $userData['email']; ?></td>
-                    <td><?php echo $userData['status']; ?></td>
+                    <td><?php echo $userData['role']; ?></td>
                     <td class="link-list">
                         <a href="/bo/user/view-user?id=<?php echo $userData['id']; ?>" class="link-primary">
                             <i class="fa fa-eye" aria-hidden="true"></i>

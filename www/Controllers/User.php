@@ -6,6 +6,12 @@ use App\Core\DB;
 use App\Core\Verificator;
 use App\Forms\EditUser;
 use App\Forms\EditPwd;
+
+
+// require __DIR__ . '/../core/View.php';
+// require_once __DIR__ . '/../core/DB.php';
+// require __DIR__ . '/../core/Verificator.php';
+// require __DIR__ . '/../Models/User.php';
 use App\Models\User as UserModel;
 
 class User
@@ -67,7 +73,7 @@ class User
                 $user->setLastname($_REQUEST['Nom']);
                 $user->setUsername($_REQUEST['Nom_d\'utilisateur']);
                 $user->setEmail($_REQUEST['E-mail']);
-                $user->setImgPath($_REQUEST['Image_de_profil']);
+                $user->setImgPath("");
                 $user->setRoles($_REQUEST['Role']);
                 // Enregistrer les modifications
                 $user->save(); // Cette méthode doit gérer la logique de mise à jour

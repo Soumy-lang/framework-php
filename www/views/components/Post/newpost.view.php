@@ -12,6 +12,7 @@
     selector: '#mytextarea',
     plugins: 'image',
     toolbar: 'image',
+    valid_elements: '*[*]',
     image_title: true,
     automatic_uploads: true,
     images_upload_url: '/upload-image',

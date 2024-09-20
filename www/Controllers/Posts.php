@@ -6,13 +6,15 @@ use App\Core\DB;
 use App\Core\View;
 use App\Core\PageBuilder;
 use App\Models\Post;
-use App\Models\Theme;
-use App\Models\Media;
 use App\Models\User;
 use App\Forms\AddArticle;
 use App\Forms\UpdateArticle;
 use App\Forms\AddPage;
 use App\Forms\UpdatePage;
+
+// require __DIR__ . '/../core/View.php';
+// require_once __DIR__ . '/../core/DB.php';
+// require __DIR__ . '/../Models/Post.php';
 
 class Posts
 {

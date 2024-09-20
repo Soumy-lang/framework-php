@@ -58,7 +58,6 @@
   controller: SiteSetting
   action: index
   security: true
-  # roles: [admin]
 
 /bo/user:
   controller: User
@@ -76,13 +75,13 @@
   controller: User
   action: editUser
   security: true
-  # roles: [admin]
+  roles: [admin]
 
 /bo/user/edit-password:
   controller: User
   action: editPassword
   security: true
-  # roles: [admin]
+  roles: [admin]
 
 /recover-password:
   controller: Security
