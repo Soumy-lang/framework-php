@@ -31,10 +31,10 @@ class Install
                 $adminPassword = $_REQUEST['Mot_de_passe'] ?? ''; 
                 $adminPasswordConfirm = $_REQUEST['Confirmation_de_mot_de_passe'] ?? ''; 
 
-                $dbhost= 'sg426040-001.eu.clouddb.ovh.net';
-                $dbname = 'olympic'; 
-                $dbuser = 'gamer'; 
-                $dbpassword = 'OlympicGamers2024'; 
+                $dbhost= 'xxx';
+                $dbname = 'xxx'; 
+                $dbuser = 'xxx'; 
+                $dbpassword = 'xxx'; 
                 $tablePrefix = $adminUsername . '_' . $_REQUEST['Prefixe_des_tables'] ?? '';   
 
                 // Ecrire dans le fichier de configuration
